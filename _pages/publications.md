@@ -1,7 +1,9 @@
 ---
-permalink: /Publications/
+layout: default
+permalink: /publications/
 title: "Publications"
-author_profile: true
+author_profile: false
+---
 ---
 
 <span class='anchor' id='Publications'></span>
