@@ -1,16 +1,27 @@
 # main links
+# main:
+#  - title: "About Me"
+#    url: "#about-me"
+#
+#  - title: "News"
+#    url: "#news"
+#
+#  - title: "Publications"
+#    url: "#publications"
+#
+#  - title: "Honors and Awards"
+#    url: "#honors-and-awards"
+#
+#  - title: "Educations"
+#    url: "#educations"
+
+
 main:
+  - title: "Homepage"
+    url: /
   - title: "About Me"
-    url: "#about-me"
-
-  - title: "News"
-    url: "#news"
-
+    url: /About/
   - title: "Publications"
-    url: "#publications"
-
-  - title: "Honors and Awards"
-    url: "#honors-and-awards"
-
-  - title: "Educations"
-    url: "#educations"
+    url: /Publications/
+  - title: "Photos"
+    url: /Publications/
