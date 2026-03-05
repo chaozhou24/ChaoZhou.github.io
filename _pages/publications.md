@@ -5,6 +5,7 @@ title: "Publications"
 author_profile: true
 ---
 
+<span class='anchor' id='publications'></span>
 <style>
   /* 基础列表样式重置 */
   .pub-list { list-style: none; padding-left: 0; }
