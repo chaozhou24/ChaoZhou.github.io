@@ -23,8 +23,7 @@ main:
     url: /About.html
     target: _self
   - title: "Publications"
-    url: /Publications/
-    target: _self
+    url: /Publications
   - title: "Photos"
     url: /Photos.html
     target: _self
