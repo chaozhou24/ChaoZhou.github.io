@@ -1,6 +1,9 @@
 ---
+layout：single
+share：true
+comments：true
 title: "Publications"
-permalink: /Publications
+permalink: /Publications/
 ---
 
 <style>
