@@ -1,7 +1,7 @@
-
 ---
-title: "Publications"
 permalink: /publications/
+title: "Publications"
+author_profile: true
 ---
 
 <span class='anchor' id='Publications'></span>
