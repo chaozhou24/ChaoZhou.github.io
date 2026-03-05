@@ -20,8 +20,8 @@ main:
 #  - title: "Homepage"
 #    url: /
   - title: "About Me"
-    url: /About.html
+    url: /About/
   - title: "Publications"
-    url: /Publications.html
+    url: /Publications/
   - title: "Photos"
-    url: /Photos.html
+    url: /Photos/
