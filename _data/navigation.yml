@@ -22,6 +22,6 @@ main:
   - title: "About Me"
     url: /About.html
   - title: "Publications"
-    url: /Publications/
+    url: /Publications.html
   - title: "Photos"
     url: /Photos.html
