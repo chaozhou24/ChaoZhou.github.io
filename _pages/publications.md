@@ -4,13 +4,6 @@ permalink: /publications/
 title: "Publications"
 author_profile: true
 ---
----
-
-<span class='anchor' id='Publications'></span>
-
-
-
-
 
 <style>
   /* 基础列表样式重置 */
