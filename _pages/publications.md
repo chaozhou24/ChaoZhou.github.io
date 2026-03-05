@@ -1,6 +1,5 @@
 ---
 layout：single
-share：true
 title: "Publications"
 permalink: /Publications/
 ---
