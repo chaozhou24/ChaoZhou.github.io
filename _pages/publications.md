@@ -36,7 +36,7 @@ permalink: /Publications.html
 
 # 📝 Publications 
 
-### 📡 Near-Field Communications
+## 📡 Near-Field Communications
 <ul class="topic-list">
   <li>Qianglong Dai, Yong Zeng, Huizhi Wang, Changsheng You, <b>Chao Zhou</b>, et al., "<a href="https://ieeexplore.ieee.org/document/11328117">A Tutorial on MIMO-OFDM ISAC: From Far-Field to Near-Field</a>," <i>IEEE Communications Surveys & Tutorials</i>, 2026.</li>
 
@@ -53,7 +53,7 @@ permalink: /Publications.html
   <li>Jiapeng Li, Changsheng You, and <b>Chao Zhou</b>, "<a href="https://ieeexplore.ieee.org/document/11162419">Extremely Large-scale Lens Antenna Array: Location-aware Near-field Beamforming</a>," in <i>Proc. IEEE ICC Workshops</i>, 2025.</li>
 </ul>
 
-###  ⚙ Intelligent antenna and surface
+##  ⚙ Intelligent antenna and surface
 <ul class="topic-list">
   <li>Liujia Yao, Changsheng You, <b>Chao Zhou</b>, Beixiong Zheng, and Weidong Mei, "<a href="https://ieeexplore.ieee.org/document/11329408">Position Optimization for Two-Layer Movable Antenna Systems</a>," <i>IEEE Wireless Communications Letters</i>, 2026.</li>
 
@@ -71,7 +71,7 @@ permalink: /Publications.html
   
 </ul>
 
-### 🤝 Symbiotic Radio
+## 🤝 Symbiotic Radio
 <ul class="topic-list">
   <li><b>Chao Zhou</b>, Bin Lyu, Changsheng You, and Dinh Thai Hoang, "<a href="https://ieeexplore.ieee.org/document/10342707">Cooperative Commensal and Parasitic Symbiotic Radio Communication Systems</a>," <i>IEEE Transactions on Communications</i>, 2024.</li>
 
