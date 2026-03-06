@@ -126,42 +126,42 @@ Jump to:
 
 <div class="photo-item">
   <img src="/images/2602dinner.jpg" alt="PhD Photo 1">
-  <div class="photo-caption">2026年2月 实验室聚餐</div>
+  <div class="photo-caption">[2026-02] Laboratory dinner</div>
 </div>
 
 <div class="photo-item">
   <img src="/images/2511dongxichong.jpg" alt="PhD Photo 2">
-  <div class="photo-caption">2025年11月 东西涌徒步</div>
+  <div class="photo-caption">[2025-11] Dongxiyong Hiking</div>
 </div>
 
 <div class="photo-item">
   <img src="/images/2507Dinner.jpg" alt="PhD Photo 3">
-  <div class="photo-caption">2025年7月 晚餐合影</div>
+  <div class="photo-caption">[2025-07] Laboratory dinner</div>
 </div>
 
 <div class="photo-item">
   <img src="/images/2507TanglangMou.jpg" alt="PhD Photo 4">
-  <div class="photo-caption">2025年7月 塘朗山</div>
+  <div class="photo-caption">[2025-07] Tanglang Mountain Hiking</div>
 </div>
 
 <div class="photo-item">
   <img src="/images/2503YangtaiMoun2.jpg" alt="PhD Photo 5">
-  <div class="photo-caption">2025年3月 阳台山</div>
+  <div class="photo-caption">[2025-03] Yangtai Mountain Hiking</div>
 </div>
 
 <div class="photo-item">
   <img src="/images/DongxiCong1.jpg" alt="PhD Photo 6">
-  <div class="photo-caption">东西涌风景</div>
+  <div class="photo-caption">[2024-08] Dongxiyong Hiking</div>
 </div>
 
 <div class="photo-item">
   <img src="/images/2407TanglangMou.jpg" alt="PhD Photo 7">
-  <div class="photo-caption">2024年7月 塘朗山</div>
+  <div class="photo-caption">[2024-07] Tanglang Mountain Hiking</div>
 </div>
 
 <div class="photo-item">
   <img src="/images/MIMO.jpg" alt="PhD Photo 8">
-  <div class="photo-caption">MIMO 实验设备</div>
+  <div class="photo-caption">[2024-07] MIMO course at Tsinghua Uni.</div>
 </div>
 
 </div>
@@ -175,12 +175,12 @@ Jump to:
 
 <div class="photo-item">
   <img src="/images/2405Gra.jpg" alt="Master's Photo 1">
-  <div class="photo-caption">2024年5月 毕业合影</div>
+  <div class="photo-caption">[2024-05] Graduation photo</div>
 </div>
 
 <div class="photo-item">
   <img src="/images/2405Gra2.jpg" alt="Master's Photo 2">
-  <div class="photo-caption">2024年5月 毕业留念</div>
+  <div class="photo-caption">[2024-05] Graduation photo</div>
 </div>
 
 </div>
@@ -194,12 +194,12 @@ Jump to:
 
 <div class="photo-item">
   <img src="/images/Yantai.jpg" alt="Personal Photo 1">
-  <div class="photo-caption">烟台海边</div>
+  <div class="photo-caption">[2026-02] Yantai Travel</div>
 </div>
 
 <div class="photo-item">
   <img src="/images/2401eimen.jpg" alt="Personal Photo 2">
-  <div class="photo-caption">2024年1月 澳门旅行</div>
+  <div class="photo-caption">[2024-01] Xiamen Travel</div>
 </div>
 
 </div>
