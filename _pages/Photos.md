@@ -2,6 +2,77 @@
 #title: "Photos"
 permalink: /Photos.html
 ---
+
+<style>
+
+/* 图片布局 */
+.photo-gallery{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+/* 图片容器 */
+.photo-item{
+  overflow:hidden;
+  border-radius:12px;
+}
+
+/* 图片样式 */
+.photo-item img{
+  width:300px;
+  height:auto;
+  transition:transform 0.35s ease, box-shadow 0.35s ease;
+  cursor:pointer;
+}
+
+/* 悬停放大 + 阴影 */
+.photo-item img:hover{
+  transform:scale(1.15);
+  box-shadow:0 12px 30px rgba(0,0,0,0.35);
+}
+
+/* Lightbox 背景 */
+#lightbox{
+  display:none;
+  position:fixed;
+  z-index:9999;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+}
+
+/* 弹出图片 */
+#lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:10px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.7);
+  animation:zoomIn 0.3s ease;
+}
+
+/* 关闭按钮 */
+#lightbox-close{
+  position:absolute;
+  top:25px;
+  right:40px;
+  font-size:40px;
+  color:white;
+  cursor:pointer;
+}
+
+/* 动画 */
+@keyframes zoomIn{
+  from{transform:scale(0.8);}
+  to{transform:scale(1);}
+}
+
+</style>
+
 # Photos
 
 Jump to:
@@ -11,34 +82,101 @@ Jump to:
 
 ---
 
-## Academic Activities
 <span id="academic-activities"></span>
+## Academic Activities
 
-<div style="display: flex; flex-wrap: wrap; gap: 20px;">
-  <img src="/images/academic1.jpg" alt="Academic Activity 1" width="300">
-  <img src="/images/academic2.jpg" alt="Academic Activity 2" width="300">
-  <img src="/images/academic3.jpg" alt="Academic Activity 3" width="300">
+<div class="photo-gallery">
+
+<div class="photo-item">
+<img src="/images/academic1.jpg">
+</div>
+
+<div class="photo-item">
+<img src="/images/academic2.jpg">
+</div>
+
+<div class="photo-item">
+<img src="/images/academic3.jpg">
+</div>
+
 </div>
 
 ---
 
-## Group Activities
 <span id="group-activities"></span>
+## Group Activities
 
-<div style="display: flex; flex-wrap: wrap; gap: 20px;">
-  <img src="/images/2507TanglangMou.jpg" alt="Group Activity 1" width="300">
-  <img src="/images/2507Dinner.jpg" alt="Group Activity 2" width="300">
-  <img src="/images/2504YangtaiMoun.jpg" alt="Group Activity 3" width="300">
-  <img src="/images/2510backetball.jpg" alt="Group Activity 3" width="300">
+<div class="photo-gallery">
+
+<div class="photo-item">
+<img src="/images/2507TanglangMou.jpg">
+</div>
+
+<div class="photo-item">
+<img src="/images/2507Dinner.jpg">
+</div>
+
+<div class="photo-item">
+<img src="/images/2504YangtaiMoun.jpg">
+</div>
+
+<div class="photo-item">
+<img src="/images/2510backetball.jpg">
+</div>
+
 </div>
 
 ---
 
-## My Trip
 <span id="my-trip"></span>
+## My Trip
 
-<div style="display: flex; flex-wrap: wrap; gap: 20px;">
-  <img src="/images/trip1.jpg" alt="Trip 1" width="300">
-  <img src="/images/trip2.jpg" alt="Trip 2" width="300">
-  <img src="/images/trip3.jpg" alt="Trip 3" width="300">
+<div class="photo-gallery">
+
+<div class="photo-item">
+<img src="/images/trip1.jpg">
 </div>
+
+<div class="photo-item">
+<img src="/images/trip2.jpg">
+</div>
+
+<div class="photo-item">
+<img src="/images/trip3.jpg">
+</div>
+
+</div>
+
+---
+
+<!-- Lightbox -->
+<div id="lightbox">
+<span id="lightbox-close">&times;</span>
+<img id="lightbox-img">
+</div>
+
+<script>
+
+const images=document.querySelectorAll(".photo-item img");
+const lightbox=document.getElementById("lightbox");
+const lightboxImg=document.getElementById("lightbox-img");
+const closeBtn=document.getElementById("lightbox-close");
+
+images.forEach(img=>{
+img.onclick=function(){
+lightbox.style.display="flex";
+lightboxImg.src=this.src;
+}
+});
+
+closeBtn.onclick=function(){
+lightbox.style.display="none";
+}
+
+lightbox.onclick=function(e){
+if(e.target===lightbox){
+lightbox.style.display="none";
+}
+}
+
+</script>
