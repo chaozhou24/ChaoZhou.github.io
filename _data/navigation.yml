@@ -17,8 +17,9 @@
 
 
 main:
+
   - title: "Homepage"
-   url: /
+    url: /
 
   - title: "About Me"
     url: /About.html
