@@ -110,7 +110,7 @@ Jump to:
 </div>
 
 <div class="photo-item">
-  <img src="/images/2503YangtaiMoun.jpg" alt="PhD Photo 5">
+  <img src="/images/2503YangtaiMoun2.jpg" alt="PhD Photo 5">
 </div>
 
 <div class="photo-item">
