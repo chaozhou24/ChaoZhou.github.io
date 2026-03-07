@@ -21,8 +21,8 @@ main:
 #  - title: "Homepage"
 #    url: /
 
-  - title: "About Me"
-    url: /About.html
+#  - title: "About Me"
+#   url: /About.html
 
   - title: "Publications"
     url: /Publications.html
