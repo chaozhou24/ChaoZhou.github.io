@@ -392,7 +392,7 @@ redirect_from:
     </p>
    </div>
 
-    <div class="news-item">
+  <div class="news-item">
     <p>
       <span class="news-date">2024.10</span>
       I received the National Scholarship for Master's Students (Top 2\%), 2022.
