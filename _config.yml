@@ -26,9 +26,9 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 
 # Site Author
 author:
-  name             : "Chao Zhou"
+  name             : "Chao Zhou (周超)"
   avatar           : "images/Myprofile.jpg"
-  bio              : "zhouchao2024@mail.sustech.edu.cn"
+  bio              : "SuSTech"
   location         : "Shenzhen, China"
   employer         :
   pubmed           : 
