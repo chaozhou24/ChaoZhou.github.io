@@ -372,6 +372,13 @@ i{
       <h2>📡 Near-Field Communications</h2>
       <ul class="topic-list">
         <li>
+         <b>Chao Zhou</b>, Changsheng You, Cong Zhou, Li Chen, Yi Gong, Chengwen Xing,
+          "<a href="https://arxiv.org/pdf/2602.05666">Low-complexity Design for Beam Coverage in Near-field and Far-field: A Fourier Transform Approach</a>,"
+           <i>arXiv preprint arXiv:2602.05666</i>, 2026.
+          <span class="pub-badge badge-arxiv">arXiv</span>
+        </li>
+        
+        <li>
           Qianglong Dai, Yong Zeng, Huizhi Wang, Changsheng You, <b>Chao Zhou</b>, et al.,
           "<a href="https://ieeexplore.ieee.org/document/11328117">A Tutorial on MIMO-OFDM ISAC: From Far-Field to Near-Field</a>,"
           <i>IEEE Communications Surveys &amp; Tutorials</i>, 2026.
