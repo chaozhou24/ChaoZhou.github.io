@@ -110,7 +110,7 @@ permalink: /Photos.html
   margin-bottom:28px;
   box-shadow:var(--shadow-soft);
   position:relative;
-  z-index:1; /* 确保Section在需要时能提升层级 */
+  z-index:1;
 }
 
 .photo-section h2{
@@ -122,11 +122,12 @@ permalink: /Photos.html
   border-bottom:1px solid #efe8d9;
 }
 
-/* ===== gallery: force 3 columns on desktop ===== */
+/* ===== gallery: desktop固定一行三张 ===== */
 .photo-gallery{
   display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
+  grid-template-columns:repeat(3, 240px);
   gap:20px;
+  justify-content:start;
   align-items:start;
 }
 
@@ -135,13 +136,14 @@ permalink: /Photos.html
   position:relative;
   display:flex;
   flex-direction:column;
+  width:240px;
   background:#fffdfa;
   border:1px solid #f0e8d7;
   border-radius:18px;
   padding:12px 12px 14px 12px;
   box-shadow:0 6px 16px rgba(0,0,0,0.04);
   transition:transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-  overflow:visible; /* 这里至关重要 */
+  overflow:visible;
   z-index:1;
 }
 
@@ -149,39 +151,39 @@ permalink: /Photos.html
   transform:translateY(-3px);
   box-shadow:0 12px 28px rgba(0,0,0,0.08);
   border-color:#e6d5ab;
-  z-index:100; /* 悬停时大幅提升整个格子的层级 */
+  z-index:100;
 }
 
-/* ===== thumb ===== */
+/* ===== thumb：严格固定大小 ===== */
 .photo-thumb{
   position:relative;
-  width:100%;
-  aspect-ratio: 3 / 2; /* 核心：强制比例，大小统一 */
+  width:216px;
+  height:144px;
   border-radius:14px;
-  overflow:visible; /* 核心：修改这里，允许图片放大溢出框外 */
-  background:#f5f5f5; /* 占位背景色，防止图片加载前的空白 */
+  overflow:visible;
+  background:#f5f5f5;
 }
 
-/* ===== image ===== */
+/* ===== image：严格统一尺寸 ===== */
 .photo-item img{
-  width:100%;
-  height:100%;
-  object-fit:cover; /* 核心：自适应填充，大小统一 */
+  width:216px;
+  height:144px;
+  object-fit:cover;
   border-radius:14px;
   cursor:pointer;
   display:block;
   position:relative;
-  z-index:2; /* 图片在正常状态下层级稍高 */
+  z-index:2;
   transition:transform 0.4s ease, box-shadow 0.4s ease, filter 0.35s ease;
   transform-origin:center center;
-  will-change:transform; /* 性能优化 */
+  will-change:transform;
 }
 
-/* 更高级的 hover：覆盖排版整体放大 */
+/* ===== hover：放大为原来的2倍 ===== */
 .photo-item:hover img{
-  transform:scale(1.8); /* 这里修改为了1.8倍，如果必须2.0，请改为 scale(2) */
-  box-shadow:0 30px 80px rgba(0,0,0,0.40); /* 更强的阴影增强悬浮感 */
-  z-index:10; /* 再次提升图片层级，确保覆盖文字 */
+  transform:scale(2);
+  box-shadow:0 30px 80px rgba(0,0,0,0.40);
+  z-index:10;
 }
 
 /* 轻微遮罩 */
@@ -197,7 +199,7 @@ permalink: /Photos.html
   opacity:0;
   transition:opacity 0.28s ease;
   pointer-events:none;
-  z-index:3; /* 遮罩层在图片之上 */
+  z-index:3;
 }
 
 .photo-item:hover .photo-thumb::after{
@@ -221,14 +223,13 @@ permalink: /Photos.html
   z-index:1;
 }
 
-/* 当图片放大覆盖时，稍微降低标题的不透明度以免干扰 */
 .photo-item:hover .photo-caption{
   transform:translateY(1px);
   color:#222;
   opacity:0.6;
 }
 
-/* ===== lightbox (未修改) ===== */
+/* ===== lightbox ===== */
 #lightbox{
   display:none;
   position:fixed;
@@ -270,7 +271,6 @@ permalink: /Photos.html
   max-width:80vw;
 }
 
-/* close */
 #lightbox-close{
   position:absolute;
   top:18px;
@@ -283,7 +283,6 @@ permalink: /Photos.html
   z-index:10001;
 }
 
-/* arrows */
 .lightbox-arrow{
   position:absolute;
   top:50%;
@@ -322,10 +321,10 @@ permalink: /Photos.html
   to{transform:scale(1); opacity:1;}
 }
 
-/* ===== responsive (未修改布局，只调整移动端悬停倍数) ===== */
+/* ===== responsive ===== */
 @media (max-width: 980px){
   .photo-gallery{
-    grid-template-columns:repeat(2, minmax(0, 1fr));
+    grid-template-columns:repeat(2, 240px);
   }
 }
 
@@ -344,11 +343,25 @@ permalink: /Photos.html
 
   .photo-gallery{
     grid-template-columns:1fr;
+    justify-content:start;
   }
 
-  /* 移动端通常没有 Hover 状态，通过触控触发 Lightbox，此处保持小幅度放大以示区分 */
+  .photo-item{
+    width:240px;
+  }
+
+  .photo-thumb{
+    width:216px;
+    height:144px;
+  }
+
+  .photo-item img{
+    width:216px;
+    height:144px;
+  }
+
   .photo-item:hover img{
-    transform:scale(1.1);
+    transform:scale(1.15);
   }
 
   #lightbox-close{
@@ -552,10 +565,12 @@ images.forEach((img, index) => {
 });
 
 closeBtn.addEventListener("click", closeLightbox);
+
 prevBtn.addEventListener("click", function(e){
   e.stopPropagation();
   showPrev();
 });
+
 nextBtn.addEventListener("click", function(e){
   e.stopPropagation();
   showNext();
