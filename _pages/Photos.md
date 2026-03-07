@@ -109,8 +109,6 @@ permalink: /Photos.html
   padding:22px 22px 18px 22px;
   margin-bottom:28px;
   box-shadow:var(--shadow-soft);
-  position:relative;
-  z-index:1;
 }
 
 .photo-section h2{
@@ -122,12 +120,11 @@ permalink: /Photos.html
   border-bottom:1px solid #efe8d9;
 }
 
-/* ===== gallery: desktop固定一行三张 ===== */
+/* ===== gallery: force 3 columns on desktop ===== */
 .photo-gallery{
   display:grid;
-  grid-template-columns:repeat(3, 240px);
+  grid-template-columns:repeat(3, minmax(0, 1fr));
   gap:20px;
-  justify-content:start;
   align-items:start;
 }
 
@@ -136,14 +133,13 @@ permalink: /Photos.html
   position:relative;
   display:flex;
   flex-direction:column;
-  width:240px;
   background:#fffdfa;
   border:1px solid #f0e8d7;
   border-radius:18px;
   padding:12px 12px 14px 12px;
   box-shadow:0 6px 16px rgba(0,0,0,0.04);
   transition:transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-  overflow:visible;
+  overflow:visible; /* 允许内部图片放大跳出边框 */
   z-index:1;
 }
 
@@ -151,39 +147,40 @@ permalink: /Photos.html
   transform:translateY(-3px);
   box-shadow:0 12px 28px rgba(0,0,0,0.08);
   border-color:#e6d5ab;
-  z-index:100;
+  z-index:100; /* 悬停时，将当前格子的层级提到最高，避免被旁边图片遮挡 */
 }
 
-/* ===== thumb：严格固定大小 ===== */
+/* ===== thumb ===== */
 .photo-thumb{
   position:relative;
-  width:216px;
-  height:144px;
+  width:100%;
+  aspect-ratio: 3 / 2; /* 核心1：强制提供标准的 3:2 容器尺寸 */
   border-radius:14px;
-  overflow:visible;
+  overflow:visible; /* 允许图片放大后溢出该容器 */
   background:#f5f5f5;
 }
 
-/* ===== image：严格统一尺寸 ===== */
+/* ===== image ===== */
 .photo-item img{
-  width:216px;
-  height:144px;
-  object-fit:cover;
+  position:absolute; /* 核心2：绝对定位。不管原图多大，强行让它填满上面的 3:2 容器，从而保证所有原始照片大小一致！ */
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover; /* 核心3：自适应裁剪，保证照片不变形 */
   border-radius:14px;
   cursor:pointer;
   display:block;
-  position:relative;
   z-index:2;
-  transition:transform 0.4s ease, box-shadow 0.4s ease, filter 0.35s ease;
+  transition:transform 0.4s ease, box-shadow 0.4s ease;
   transform-origin:center center;
-  will-change:transform;
 }
 
-/* ===== hover：放大为原来的2倍 ===== */
+/* 突破排版的放大：鼠标悬停放大为原来两倍，并显示出来 */
 .photo-item:hover img{
-  transform:scale(2);
+  transform:scale(2); 
   box-shadow:0 30px 80px rgba(0,0,0,0.40);
-  z-index:10;
+  z-index:10; 
 }
 
 /* 轻微遮罩 */
@@ -218,18 +215,15 @@ permalink: /Photos.html
   align-items:center;
   justify-content:center;
   padding:0 6px;
-  transition:transform 0.22s ease, color 0.22s ease, opacity 0.2s ease;
-  position:relative;
-  z-index:1;
+  transition:transform 0.22s ease, color 0.22s ease;
 }
 
 .photo-item:hover .photo-caption{
-  transform:translateY(1px);
-  color:#222;
-  opacity:0.6;
+  transform:translateY(-1px);
+  color:#4d4d4d;
 }
 
-/* ===== lightbox ===== */
+/* ===== lightbox (保持不变) ===== */
 #lightbox{
   display:none;
   position:fixed;
@@ -308,13 +302,8 @@ permalink: /Photos.html
   transform:translateY(-50%) scale(1.05);
 }
 
-#lightbox-prev{
-  left:22px;
-}
-
-#lightbox-next{
-  right:22px;
-}
+#lightbox-prev{ left:22px; }
+#lightbox-next{ right:22px; }
 
 @keyframes zoomIn{
   from{transform:scale(0.86); opacity:0.55;}
@@ -324,71 +313,21 @@ permalink: /Photos.html
 /* ===== responsive ===== */
 @media (max-width: 980px){
   .photo-gallery{
-    grid-template-columns:repeat(2, 240px);
+    grid-template-columns:repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 768px){
-  .photo-hero{
-    padding:22px 18px;
-  }
-
-  .photo-hero h1{
-    font-size:1.65rem;
-  }
-
-  .photo-section{
-    padding:18px 16px 14px 16px;
-  }
-
-  .photo-gallery{
-    grid-template-columns:1fr;
-    justify-content:start;
-  }
-
-  .photo-item{
-    width:240px;
-  }
-
-  .photo-thumb{
-    width:216px;
-    height:144px;
-  }
-
-  .photo-item img{
-    width:216px;
-    height:144px;
-  }
-
-  .photo-item:hover img{
-    transform:scale(1.15);
-  }
-
-  #lightbox-close{
-    right:18px;
-    top:16px;
-    font-size:38px;
-  }
-
-  .lightbox-arrow{
-    width:44px;
-    height:44px;
-    font-size:24px;
-  }
-
-  #lightbox-prev{
-    left:12px;
-  }
-
-  #lightbox-next{
-    right:12px;
-  }
-
-  #lightbox-caption{
-    bottom:-36px;
-    font-size:14px;
-    max-width:88vw;
-  }
+  .photo-hero{ padding:22px 18px; }
+  .photo-hero h1{ font-size:1.65rem; }
+  .photo-section{ padding:18px 16px 14px 16px; }
+  .photo-gallery{ grid-template-columns:1fr; }
+  .photo-item:hover img{ transform:scale(2); }
+  #lightbox-close{ right:18px; top:16px; font-size:38px; }
+  .lightbox-arrow{ width:44px; height:44px; font-size:24px; }
+  #lightbox-prev{ left:12px; }
+  #lightbox-next{ right:12px; }
+  #lightbox-caption{ bottom:-36px; font-size:14px; max-width:88vw; }
 }
 </style>
 
@@ -565,12 +504,10 @@ images.forEach((img, index) => {
 });
 
 closeBtn.addEventListener("click", closeLightbox);
-
 prevBtn.addEventListener("click", function(e){
   e.stopPropagation();
   showPrev();
 });
-
 nextBtn.addEventListener("click", function(e){
   e.stopPropagation();
   showNext();
