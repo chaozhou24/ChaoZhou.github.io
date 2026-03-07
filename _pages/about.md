@@ -175,7 +175,7 @@ Google Scholar
 News
 </a>
 
-<a class="home-btn" href="/publications.html">
+<a class="home-btn" href="/Publications.html">
 Publications
 </a>
 
