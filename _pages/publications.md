@@ -373,7 +373,7 @@ i{
       <ul class="topic-list">
         <li>
          <b>Chao Zhou</b>, Changsheng You, Cong Zhou, Li Chen, Yi Gong, Chengwen Xing,
-          "<a href="https://arxiv.org/pdf/2602.05666">Low-complexity Design for Beam Coverage in Near-field and Far-field: A Fourier Transform Approach</a>,"
+          "<a href="https://arxiv.org/abs/2602.05666">Low-complexity Design for Beam Coverage in Near-field and Far-field: A Fourier Transform Approach</a>,"
            <i>arXiv preprint arXiv:2602.05666</i>, 2026.
           <span class="pub-badge badge-arxiv">arXiv</span>
         </li>
