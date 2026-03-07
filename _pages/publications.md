@@ -362,7 +362,7 @@ i{
 
     <div class="topic-nav">
       <a href="#near-field">📡 Near-field Communications (NFC)</a>
-      <a href="#intelligent-antenna">⚙ Intelligent Antenna and Surface (IA&S)</a>
+      <a href="#intelligent-antenna">⚙ Intelligent Antenna and Surface (IAaS)</a>
       <a href="#symbiotic-radio">🤝 Symbiotic Radio (SR)</a>
     </div>
 
@@ -530,7 +530,7 @@ i{
     <div class="pub-toc-title">On this page</div>
     <ul>
       <li><a href="#near-field" class="toc-link">📡 NFC</a></li>
-      <li><a href="#intelligent-antenna" class="toc-link">⚙ IA&S</a></li>
+      <li><a href="#intelligent-antenna" class="toc-link">⚙ IAaS</a></li>
       <li><a href="#symbiotic-radio" class="toc-link">🤝 SR</a></li>
     </ul>
   </aside>
