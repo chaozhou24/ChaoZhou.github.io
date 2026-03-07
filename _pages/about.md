@@ -15,25 +15,31 @@ redirect_from:
 {% endif %}
 {% assign url = gsDataBaseUrl | append: "google-scholar-stats/gs_data_shieldsio.json" %}
 
-https://www.sustech.edu.cn/en/faculties/changshengyou.html
 
 
 Hello 👋, I am Chao Zhou (周超). I am a second-year Ph.D. student at Southern University of Science and Technology (SUSTech), advised by Prof. <a href="https://www.sustech.edu.cn/en/faculties/changshengyou.html">Changsheng You</a>. I received the M.S. degree from Nanjing University of Posts and Telecommunications. My main research interests include Near-Field Communications (NFC), Intelligent Antenna and Surface, and Symbiotic Radio (SR). I have published several papers in the top international communication journals/Conferences. If you are interested in collaboration, feel free to email me at zhouchao2024@mail.sustech.edu.cn.
 
-My research interests include near-field communications and movable antennas.
+# 📖 Research interests:
+- Near-Field Communications (NFC)
+  - Flexible Beamforming Design
+  - Mixed-field Communications
+- Intelligent Antenna and Surface
+  - Intelligent Reflecting Surface
+  - Intelligent Antenna (e.g., movable antennas and rotatable antennas)
+- Backscatter Communications (Backcom)
+  - Symbiotic Radio (SR)
+
 
 <span class='anchor' id='news'></span>
 # 🔥 News
+
+- *2026.01*: 🎉🎉 Three papers have been accepted by IEEE International Conference on Communications (ICC) 2026.
+
 - *2024.11*: 🎉🎉 I received IEEE WCSP Best Paper Award for paper "[Channel Estimation for XL-IRS Assisted Wireless Systems with Double-sided Visibility Regions](https://scholar.google.com/scholar?hl=zh-CN&as_sdt=0%2C5&q=Channel+Estimation+for+XL-IRS+Assisted+Wireless+Systems+with+Double-sided+Visibility+Regions&btnG=)", 2024.
 
 
-<span class='anchor' id='honors-and-awards'></span>
-# 🎖 Honors and Awards
-- *2021.10* More information coming soon. 
-- *2021.09* More information coming soon.
+# 📄 Academic Services
 
-<span class='anchor' id='educations'></span>
-# 📖 Educations
-- *2019.06 - 2022.04 (now)*, More information coming soon.
-- *2015.09 - 2019.06*, More information coming soon.
-
+- Reviewer for Journals: IEEE JSAC, IEEE TWC, IEEE TMC, IEEE TCOM, IEEE TCCN, IEEE TVT, IEEE TGCN, IEEE OJ-COMS, IEEE WCL, IEEE CL.
+- 
+- Reviewer for Conferences: ICC'25, ICC'26, GLOBECOM'25.
