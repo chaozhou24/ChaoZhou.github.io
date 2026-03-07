@@ -364,19 +364,41 @@ redirect_from:
   <div class="news-item">
     <p>
       <span class="news-date">2026.01</span>
-      Three papers have been accepted by IEEE International Conference on Communications (ICC) 2026.
+      Three papers have been accepted by the IEEE International Conference on Communications (ICC) 2026.
     </p>
   </div>
 
   <div class="news-item">
     <p>
       <span class="news-date">2024.11</span>
-      I received IEEE WCSP Best Paper Award for paper
+      I received the IEEE WCSP Best Paper Award for paper
       <a href="https://scholar.google.com/scholar?hl=zh-CN&as_sdt=0%2C5&q=Channel+Estimation+for+XL-IRS+Assisted+Wireless+Systems+with+Double-sided+Visibility+Regions&btnG=" target="_blank">
         Channel Estimation for XL-IRS Assisted Wireless Systems with Double-sided Visibility Regions
       </a>.
     </p>
   </div>
+
+  <div class="news-item">
+    <p>
+      <span class="news-date">2024.10</span>
+      I received China Institute of Communications Master's Thesis Incentive Program (Only 7 recipients nationwide), 2024.
+    </p>
+  </div>
+
+  <div class="news-item">
+    <p>
+      <span class="news-date">2024.10</span>
+      I received the National Scholarship for Master's Students (Top 2\%), 2023.
+    </p>
+   </div>
+
+    <div class="news-item">
+    <p>
+      <span class="news-date">2024.10</span>
+      I received the National Scholarship for Master's Students (Top 2\%), 2022.
+    </p>
+   </div>
+  
 </div>
 
 <div class="section-title">📄 Academic Services</div>
