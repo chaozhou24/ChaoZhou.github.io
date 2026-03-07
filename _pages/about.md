@@ -333,7 +333,7 @@ redirect_from:
 
 <div class="research-grid">
   <div class="research-card">
-    <h3>Near-Field Communications (NFC)</h3>
+    <h3>Near-Field Communications</h3>
     <ul>
       <li>Flexible Beamforming Design</li>
       <li>Mixed-field Communications</li>
@@ -344,14 +344,14 @@ redirect_from:
     <h3>Intelligent Antenna and Surface</h3>
     <ul>
       <li>Intelligent Reflecting Surface</li>
-      <li>Intelligent Antenna (e.g., movable antennas and rotatable antennas)</li>
+      <li>Reconfigurable Antenna</li>
     </ul>
   </div>
 
   <div class="research-card">
-    <h3>Backscatter Communications (Backcom)</h3>
+    <h3>Backscatter Communications</h3>
     <ul>
-      <li>Symbiotic Radio (SR)</li>
+      <li>Symbiotic Radio</li>
     </ul>
   </div>
 </div>
