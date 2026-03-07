@@ -1,5 +1,5 @@
 ---
-#title: "Publications"
+title: "Publications"
 permalink: /Publications.html
 ---
 
@@ -361,9 +361,9 @@ i{
     </div>
 
     <div class="topic-nav">
-      <a href="#near-field">📡 Near-Field Communications</a>
-      <a href="#intelligent-antenna">⚙ Intelligent Antenna and Surface</a>
-      <a href="#symbiotic-radio">🤝 Symbiotic Radio</a>
+      <a href="#near-field">📡 Near-field Communications (NFC)</a>
+      <a href="#intelligent-antenna">⚙ Intelligent Antenna and Surface (IA&S)</a>
+      <a href="#symbiotic-radio">🤝 Symbiotic Radio (SR)</a>
     </div>
 
     <span class='anchor' id='publications'></span>
@@ -529,9 +529,9 @@ i{
   <aside class="pub-toc">
     <div class="pub-toc-title">On this page</div>
     <ul>
-      <li><a href="#near-field" class="toc-link">📡 Near-Field Communications</a></li>
-      <li><a href="#intelligent-antenna" class="toc-link">⚙ Intelligent Antenna and Surface</a></li>
-      <li><a href="#symbiotic-radio" class="toc-link">🤝 Symbiotic Radio</a></li>
+      <li><a href="#near-field" class="toc-link">📡 NFC</a></li>
+      <li><a href="#intelligent-antenna" class="toc-link">⚙ IA&S</a></li>
+      <li><a href="#symbiotic-radio" class="toc-link">🤝 SR</a></li>
     </ul>
   </aside>
 </div>
@@ -562,4 +562,4 @@ document.addEventListener("DOMContentLoaded", function () {
   setActiveLink();
   window.addEventListener("scroll", setActiveLink);
 });
-</script> 
+</script>
