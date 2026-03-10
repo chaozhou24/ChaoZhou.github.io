@@ -8,13 +8,13 @@ permalink: /Wechat.html
 
     <!-- Server rail -->
     <aside class="dc-serverbar">
-      <button class="server-btn active" type="button" aria-label="Main server">
+      <button class="server-btn active" type="button" aria-label="Main server" data-room="public">
         <span>CZ</span>
       </button>
-      <button class="server-btn" type="button" aria-label="Research server">
+      <button class="server-btn" type="button" aria-label="Research server" data-room="research">
         <span>R</span>
       </button>
-      <button class="server-btn" type="button" aria-label="Life server">
+      <button class="server-btn" type="button" aria-label="Life server" data-room="life">
         <span>L</span>
       </button>
 
@@ -50,8 +50,8 @@ permalink: /Wechat.html
               <div class="dc-channel-main">
                 <span class="hash hash-mark">#</span>
                 <div class="channel-meta">
-                  <strong>public-chat</strong>
-                  <small>Open discussion for everyone</small>
+                  <strong>public-feed</strong>
+                  <small>Open posts and public interaction</small>
                 </div>
               </div>
               <span class="channel-badge" id="badge-public" style="visibility:hidden;"></span>
@@ -71,7 +71,7 @@ permalink: /Wechat.html
               <div class="dc-channel-main">
                 <span class="hash hash-mark">#</span>
                 <div class="channel-meta">
-                  <strong>research-room</strong>
+                  <strong>research-board</strong>
                   <small>Papers, methods, experiments</small>
                 </div>
               </div>
@@ -92,8 +92,8 @@ permalink: /Wechat.html
               <div class="dc-channel-main">
                 <span class="hash hash-mark">#</span>
                 <div class="channel-meta">
-                  <strong>life-corner</strong>
-                  <small>Habits, balance, well-being</small>
+                  <strong>life-board</strong>
+                  <small>Habits, balance, daily thoughts</small>
                 </div>
               </div>
               <span class="channel-badge" id="badge-life" style="visibility:hidden;"></span>
@@ -110,7 +110,7 @@ permalink: /Wechat.html
             <span>Online</span>
           </div>
         </div>
-        <button id="clear-current-chat" type="button">Clear Current Channel</button>
+        <button id="clear-current-room" type="button">Clear Current Channel</button>
       </div>
     </aside>
 
@@ -120,8 +120,8 @@ permalink: /Wechat.html
         <div class="dc-topbar-left">
           <span class="topbar-hash hash-mark">#</span>
           <div>
-            <h2 id="room-title">public-chat</h2>
-            <p id="room-desc">A place for open conversation, quick questions, and casual interaction.</p>
+            <h2 id="room-title">public-feed</h2>
+            <p id="room-desc">A board for public posts, thoughts, questions, and open interaction.</p>
           </div>
         </div>
 
@@ -131,71 +131,65 @@ permalink: /Wechat.html
           </button>
           <div class="dc-status-pill">
             <span class="status-dot"></span>
-            <span id="chat-status">3 channels available</span>
+            <span id="chat-status">3 channels · 0 posts</span>
           </div>
         </div>
       </header>
 
-      <div class="dc-chat-panel">
+      <div class="dc-feed-panel">
         <div class="dc-room-intro">
           <div class="intro-icon hash-mark">#</div>
           <div>
-            <h3 id="intro-heading">Welcome to #public-chat</h3>
-            <p id="intro-text">This is the beginning of the channel. Start a conversation, share ideas, or switch to a more focused room.</p>
+            <h3 id="intro-heading">Welcome to #public-feed</h3>
+            <p id="intro-text">Share a post, start a discussion, and leave comments under a specific topic. This area feels more like a community board than a chat room.</p>
           </div>
         </div>
 
-        <div id="quick-chat" class="dc-chat" aria-live="polite"></div>
-
-        <div id="typing-row" class="dc-typing" hidden>
-          <span></span><span></span><span></span>
-          <em id="typing-text">Someone is typing...</em>
-        </div>
-
-        <div class="dc-toolbar">
-          <div class="dc-role-switch" role="group" aria-label="Switch sender role">
-            <button id="role-visitor" class="dc-role-btn active" type="button" data-role="visitor">Visitor</button>
-            <button id="role-author" class="dc-role-btn" type="button" data-role="author">Author</button>
-          </div>
-
-          <div class="dc-prompts" aria-label="Quick prompts">
-            <button type="button" data-prompt="@Author I’d like to ask about choosing a research direction.">@Author question</button>
-            <button type="button" data-prompt="I want to share a paper I recently found interesting:">Share a paper</button>
-            <button type="button" data-prompt="How do you keep a healthy balance between research and daily life?">Work-life balance</button>
-          </div>
-        </div>
-
-        <div id="reply-bar" class="reply-bar" hidden>
-          <div class="reply-bar-content">
-            <div class="reply-bar-title">Replying to <span id="reply-target-name">Author</span></div>
-            <div id="reply-target-text" class="reply-bar-text"></div>
-          </div>
-          <button id="cancel-reply" class="reply-close-btn" type="button" aria-label="Cancel reply">✕</button>
-        </div>
-
-        <form id="chat-form" class="dc-input-wrap" autocomplete="off">
-          <div class="dc-input-shell">
-            <div class="dc-input-actions">
-              <button class="input-icon-btn" type="button" data-insert="[Attachment] " aria-label="Attachment" title="Attachment">＋</button>
-              <button class="input-icon-btn" type="button" data-insert="😊 " aria-label="Emoji" title="Emoji">😊</button>
-              <button class="input-icon-btn" type="button" data-insert="[GIF] " aria-label="GIF" title="GIF">GIF</button>
+        <section class="forum-composer-card">
+          <div class="forum-composer-top">
+            <div class="dc-role-switch" role="group" aria-label="Switch poster role">
+              <button id="role-visitor" class="dc-role-btn active" type="button" data-role="visitor">Visitor</button>
+              <button id="role-author" class="dc-role-btn" type="button" data-role="author">Author</button>
             </div>
 
-            <input
-              id="chat-text"
-              type="text"
-              maxlength="280"
-              placeholder="Message this channel"
-              aria-label="Type a chat message"
-            />
-
-            <button type="submit">Send</button>
+            <div class="forum-compose-hint">
+              Posting in <strong id="compose-room-label">public-feed</strong>
+            </div>
           </div>
-        </form>
+
+          <div class="forum-compose-grid">
+            <input id="post-title" type="text" maxlength="90" placeholder="Post title (optional but recommended)" />
+            <textarea id="post-text" maxlength="1200" placeholder="Write something thoughtful... share a question, an update, an idea, or a reflection."></textarea>
+          </div>
+
+          <div class="forum-composer-bottom">
+            <div class="dc-prompts" aria-label="Quick prompts">
+              <button type="button" data-fill-title="Looking for advice on research direction" data-fill-text="I am currently exploring several possible research topics. I would love to hear how others narrow down a good direction and judge whether a topic is worth pursuing long term.">Research direction</button>
+              <button type="button" data-fill-title="A paper worth discussing" data-fill-text="I recently read a paper that I found interesting. I want to share the core idea, what I think is useful, and a few questions that might be worth discussing together.">Share a paper</button>
+              <button type="button" data-fill-title="How do you balance work and life?" data-fill-text="I am curious how people maintain consistent research productivity while also keeping healthy routines, exercise, and enough rest.">Work-life balance</button>
+            </div>
+
+            <div class="forum-compose-actions">
+              <span id="composer-count" class="composer-count">0 / 1200</span>
+              <button id="submit-post" class="publish-btn" type="button">Publish Post</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="forum-feed-wrap">
+          <div class="forum-feed-head">
+            <div>
+              <h3>Community Feed</h3>
+              <p id="feed-summary">Posts are displayed in a clean thread style. Click “Comment” to discuss a specific post.</p>
+            </div>
+          </div>
+
+          <div id="forum-feed" class="forum-feed" aria-live="polite"></div>
+        </section>
 
         <div class="dc-discussion">
-          <div class="dc-discussion-title">Long-form Discussion</div>
-          <p>Use the quick chat above for fast interaction. For deeper and persistent discussion, leave your thoughts below.</p>
+          <div class="dc-discussion-title">Archive Discussion</div>
+          <p>This section still supports long-form public discussion through GitHub Discussions. The post feed above is the visual forum layer; the section below can remain as a persistent archive.</p>
 
           <script src="https://giscus.app/client.js"
                   data-repo="chaozhou24/chaozhou24.github.io"
@@ -251,6 +245,7 @@ permalink: /Wechat.html
     --dc-input: #1e1f22;
     --dc-reply-bg: #2c2f36;
     --dc-hover-toolbar: #1b1d21;
+    --dc-post-shadow: 0 14px 30px rgba(0,0,0,0.16);
   }
 
   body.theme-light {
@@ -276,6 +271,7 @@ permalink: /Wechat.html
     --dc-input: #f5f8fd;
     --dc-reply-bg: #eef3fb;
     --dc-hover-toolbar: #ffffff;
+    --dc-post-shadow: 0 12px 28px rgba(15,23,42,0.08);
   }
 
   .visually-hidden {
@@ -745,10 +741,10 @@ permalink: /Wechat.html
     100% { box-shadow: 0 0 0 0 rgba(35, 165, 89, 0); }
   }
 
-  .dc-chat-panel {
-    min-width: 0;
+  .dc-feed-panel {
     display: flex;
     flex-direction: column;
+    min-width: 0;
   }
 
   .dc-room-intro {
@@ -789,280 +785,32 @@ permalink: /Wechat.html
     max-width: 860px;
   }
 
-  .dc-chat {
-    flex: 1;
-    min-height: 380px;
-    max-height: 640px;
-    overflow-y: auto;
-    padding: 14px 0 8px;
-    background: var(--dc-main);
-  }
-
-  .dc-chat::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  .dc-chat::-webkit-scrollbar-thumb {
-    background: var(--dc-card);
-    border-radius: 999px;
-  }
-
-  .date-separator {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 34px 8px;
-  }
-
-  .date-separator::before,
-  .date-separator::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--dc-border-strong);
-  }
-
-  .date-separator span {
-    color: var(--dc-text-faint);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-  }
-
-  .msg-row {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    padding: 12px 34px;
-    transition: background var(--dc-transition);
-    position: relative;
-  }
-
-  .msg-row:hover {
-    background: var(--dc-card-hover);
-  }
-
-  .msg-row.outgoing {
-    flex-direction: row-reverse;
-  }
-
-  .msg-row.compact {
-    padding-top: 4px;
-  }
-
-  .msg-avatar {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    font-weight: 800;
-    font-size: 13px;
-    color: white;
-    flex: none;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.18);
-  }
-
-  .msg-row.author .msg-avatar {
-    background: linear-gradient(135deg, var(--dc-author), #f7c75d);
-    color: #3a2400;
-  }
-
-  .msg-row.visitor .msg-avatar {
-    background: linear-gradient(135deg, var(--dc-visitor), #79bcff);
-    color: #082542;
-  }
-
-  .msg-row.compact .msg-avatar {
-    visibility: hidden;
-    box-shadow: none;
-  }
-
-  .msg-body {
-    max-width: min(88%, 1100px);
-    min-width: 0;
-    position: relative;
-  }
-
-  .msg-row.outgoing .msg-body {
-    text-align: right;
-  }
-
-  .msg-meta {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-
-  .msg-row.outgoing .msg-meta {
-    justify-content: flex-end;
-  }
-
-  .msg-row.compact .msg-meta {
-    display: none;
-  }
-
-  .msg-name {
-    color: var(--dc-text);
-    font-weight: 800;
-    font-size: 15px;
-  }
-
-  .msg-time {
-    color: var(--dc-text-faint);
-    font-size: 12px;
-  }
-
-  .reply-preview {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    max-width: 100%;
-    margin-bottom: 8px;
-    font-size: 12px;
-    color: var(--dc-text-faint);
-    background: rgba(0,0,0,0.04);
-    padding: 6px 8px;
-    border-radius: 10px;
+  .forum-composer-card {
+    margin: 24px 28px 18px;
+    padding: 20px;
     border: 1px solid var(--dc-border);
+    border-radius: 22px;
+    background: linear-gradient(180deg, var(--dc-main-2), var(--dc-card));
+    box-shadow: var(--dc-post-shadow);
   }
 
-  .msg-row.outgoing .reply-preview {
-    justify-content: flex-end;
-  }
-
-  .reply-preview-line {
-    width: 18px;
-    height: 1px;
-    background: currentColor;
-    opacity: 0.6;
-    flex: none;
-  }
-
-  .reply-preview strong {
-    color: var(--dc-text-soft);
-    font-weight: 700;
-  }
-
-  .reply-preview-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 400px;
-  }
-
-  .bubble {
-    display: inline-block;
-    max-width: 100%;
-    background: var(--dc-card-soft);
-    color: var(--dc-text);
-    border-radius: 18px;
-    padding: 14px 18px;
-    line-height: 1.75;
-    border: 1px solid var(--dc-border);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-    word-break: break-word;
-    transform: translateY(6px);
-    opacity: 0;
-    animation: msgIn .18s ease forwards;
-    font-size: 15px;
-  }
-
-  .msg-row.outgoing .bubble {
-    background: linear-gradient(180deg, var(--dc-accent), var(--dc-accent-2));
-    color: #fff;
-    border-color: transparent;
-  }
-
-  @keyframes msgIn {
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  .msg-actions {
-    position: absolute;
-    top: -10px;
-    right: 0;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--dc-hover-toolbar);
-    border: 1px solid var(--dc-border);
-    border-radius: 12px;
-    padding: 6px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.10);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(4px);
-    transition: opacity var(--dc-transition), transform var(--dc-transition);
-    z-index: 3;
-  }
-
-  .msg-row.outgoing .msg-actions {
-    right: auto;
-    left: 0;
-  }
-
-  .msg-row:hover .msg-actions {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
-
-  .msg-action-btn {
-    width: 30px;
-    height: 30px;
-    border: 0;
-    border-radius: 8px;
-    background: transparent;
-    color: var(--dc-text-soft);
-    cursor: pointer;
-    transition: background var(--dc-transition), color var(--dc-transition);
-    font-size: 13px;
-  }
-
-  .msg-action-btn:hover {
-    background: var(--dc-card-hover);
-    color: var(--dc-text);
-  }
-
-  .dc-typing {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    margin: 6px 34px 14px;
-    color: var(--dc-text-faint);
-    font-size: 13px;
-  }
-
-  .dc-typing span {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #9ca3af;
-    animation: blink 1.1s infinite ease-in-out;
-  }
-
-  .dc-typing span:nth-child(2) { animation-delay: .15s; }
-  .dc-typing span:nth-child(3) { animation-delay: .3s; }
-
-  @keyframes blink {
-    0%, 80%, 100% { opacity: .25; transform: translateY(0); }
-    40% { opacity: 1; transform: translateY(-2px); }
-  }
-
-  .dc-toolbar {
+  .forum-composer-top {
     display: flex;
     justify-content: space-between;
-    gap: 14px;
     align-items: center;
-    padding: 16px 28px 12px;
-    border-top: 1px solid var(--dc-border);
+    gap: 14px;
     flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .forum-compose-hint {
+    color: var(--dc-text-soft);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .forum-compose-hint strong {
+    color: var(--dc-accent);
   }
 
   .dc-role-switch {
@@ -1095,6 +843,58 @@ permalink: /Wechat.html
     transform: translateY(-1px);
   }
 
+  .forum-compose-grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  .forum-compose-grid input,
+  .forum-compose-grid textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--dc-border);
+    background: var(--dc-input);
+    color: var(--dc-text);
+    border-radius: 16px;
+    outline: none;
+    transition: border-color var(--dc-transition), box-shadow var(--dc-transition), transform var(--dc-transition);
+  }
+
+  .forum-compose-grid input {
+    padding: 14px 16px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .forum-compose-grid textarea {
+    min-height: 140px;
+    resize: vertical;
+    padding: 16px;
+    font-size: 15px;
+    line-height: 1.7;
+    font-family: inherit;
+  }
+
+  .forum-compose-grid input::placeholder,
+  .forum-compose-grid textarea::placeholder {
+    color: var(--dc-text-faint);
+  }
+
+  .forum-compose-grid input:focus,
+  .forum-compose-grid textarea:focus {
+    border-color: rgba(88,101,242,0.6);
+    box-shadow: 0 0 0 3px rgba(88,101,242,0.16);
+  }
+
+  .forum-composer-bottom {
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
   .dc-prompts {
     display: flex;
     gap: 8px;
@@ -1119,131 +919,387 @@ permalink: /Wechat.html
     transform: translateY(-1px);
   }
 
-  .reply-bar {
-    margin: 0 28px 12px;
-    padding: 12px 14px;
-    border: 1px solid var(--dc-border);
-    background: var(--dc-reply-bg);
-    border-radius: 14px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 10px;
-  }
-
-  .reply-bar-content {
-    min-width: 0;
-  }
-
-  .reply-bar-title {
-    color: var(--dc-text);
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-
-  .reply-bar-title span {
-    color: var(--dc-accent);
-  }
-
-  .reply-bar-text {
-    color: var(--dc-text-soft);
-    font-size: 13px;
-    line-height: 1.45;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 760px;
-  }
-
-  .reply-close-btn {
-    width: 30px;
-    height: 30px;
-    border: 0;
-    border-radius: 8px;
-    background: transparent;
-    color: var(--dc-text-soft);
-    cursor: pointer;
-    transition: background var(--dc-transition), color var(--dc-transition);
-    flex: none;
-  }
-
-  .reply-close-btn:hover {
-    background: var(--dc-card-hover);
-    color: var(--dc-text);
-  }
-
-  .dc-input-wrap {
-    padding: 0 28px 22px;
-  }
-
-  .dc-input-shell {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    background: var(--dc-input);
-    border: 1px solid var(--dc-border);
-    border-radius: 16px;
-    padding: 12px;
-  }
-
-  .dc-input-actions {
+  .forum-compose-actions {
     display: flex;
     align-items: center;
-    gap: 8px;
-    flex: none;
+    gap: 12px;
   }
 
-  .input-icon-btn {
-    width: 34px;
-    height: 34px;
-    border: 0;
-    border-radius: 10px;
-    background: var(--dc-card);
-    color: var(--dc-text-soft);
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 800;
-    transition: all var(--dc-transition);
-  }
-
-  .input-icon-btn:hover {
-    background: var(--dc-accent);
-    color: #fff;
-    transform: translateY(-1px);
-  }
-
-  .dc-input-shell input {
-    flex: 1;
-    border: 0;
-    outline: none;
-    background: transparent;
-    color: var(--dc-text);
-    font-size: 15px;
-    padding: 8px 10px;
-    min-width: 0;
-  }
-
-  .dc-input-shell input::placeholder {
+  .composer-count {
     color: var(--dc-text-faint);
+    font-size: 12px;
+    font-weight: 700;
   }
 
-  .dc-input-shell button[type="submit"] {
+  .publish-btn {
     border: 0;
-    border-radius: 12px;
-    padding: 11px 18px;
+    border-radius: 14px;
+    padding: 12px 18px;
     background: linear-gradient(180deg, var(--dc-accent), var(--dc-accent-2));
     color: #fff;
     font-weight: 800;
     cursor: pointer;
     transition: transform var(--dc-transition), box-shadow var(--dc-transition);
     box-shadow: 0 10px 20px rgba(88,101,242,0.24);
+  }
+
+  .publish-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 24px rgba(88,101,242,0.28);
+  }
+
+  .forum-feed-wrap {
+    padding: 2px 28px 28px;
+  }
+
+  .forum-feed-head {
+    padding: 8px 0 16px;
+    border-bottom: 1px solid var(--dc-border);
+    margin-bottom: 18px;
+  }
+
+  .forum-feed-head h3 {
+    margin: 0;
+    color: var(--dc-text);
+    font-size: 19px;
+  }
+
+  .forum-feed-head p {
+    margin: 6px 0 0;
+    color: var(--dc-text-soft);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .forum-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .forum-empty {
+    padding: 34px 24px;
+    border: 1px dashed var(--dc-border-strong);
+    border-radius: 20px;
+    background: var(--dc-main-2);
+    color: var(--dc-text-soft);
+    text-align: center;
+  }
+
+  .forum-post {
+    position: relative;
+    background: var(--dc-card);
+    border: 1px solid var(--dc-border);
+    border-radius: 22px;
+    padding: 20px 20px 16px;
+    box-shadow: var(--dc-post-shadow);
+    transition: transform var(--dc-transition), border-color var(--dc-transition), box-shadow var(--dc-transition);
+  }
+
+  .forum-post:hover {
+    transform: translateY(-2px);
+    border-color: var(--dc-border-strong);
+  }
+
+  .forum-post-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+
+  .forum-post-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .post-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    font-size: 13px;
+    font-weight: 800;
+    flex: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.16);
+  }
+
+  .post-avatar.author {
+    background: linear-gradient(135deg, var(--dc-author), #f7c75d);
+    color: #3a2400;
+  }
+
+  .post-avatar.visitor {
+    background: linear-gradient(135deg, var(--dc-visitor), #79bcff);
+    color: #082542;
+  }
+
+  .post-author-meta {
+    min-width: 0;
+  }
+
+  .post-author-meta strong {
+    display: block;
+    color: var(--dc-text);
+    font-size: 15px;
+    line-height: 1.2;
+  }
+
+  .post-submeta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 4px;
+  }
+
+  .post-time {
+    color: var(--dc-text-faint);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .post-role-tag {
+    border-radius: 999px;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+  }
+
+  .post-role-tag.author {
+    background: rgba(240, 178, 50, 0.14);
+    color: var(--dc-author);
+  }
+
+  .post-role-tag.visitor {
+    background: rgba(78, 161, 255, 0.14);
+    color: var(--dc-visitor);
+  }
+
+  .post-actions-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .room-chip {
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--dc-main-2);
+    border: 1px solid var(--dc-border);
+    color: var(--dc-text-soft);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .post-title {
+    margin: 0 0 12px;
+    color: var(--dc-text);
+    font-size: 22px;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  .post-content {
+    color: var(--dc-text-soft);
+    font-size: 15px;
+    line-height: 1.85;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .post-footer {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px solid var(--dc-border);
+  }
+
+  .post-stat {
+    color: var(--dc-text-faint);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .post-action-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .post-btn {
+    border: 1px solid var(--dc-border);
+    background: var(--dc-main-2);
+    color: var(--dc-text-soft);
+    border-radius: 12px;
+    padding: 9px 13px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background var(--dc-transition), color var(--dc-transition), transform var(--dc-transition);
+  }
+
+  .post-btn:hover {
+    background: var(--dc-card-hover);
+    color: var(--dc-text);
+    transform: translateY(-1px);
+  }
+
+  .post-btn.primary {
+    background: rgba(88,101,242,0.12);
+    color: var(--dc-accent);
+    border-color: rgba(88,101,242,0.2);
+  }
+
+  .post-btn.primary:hover {
+    background: var(--dc-accent);
+    color: #fff;
+  }
+
+  .comment-area {
+    margin-top: 16px;
+    border-top: 1px solid var(--dc-border);
+    padding-top: 16px;
+  }
+
+  .comment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .comment-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: var(--dc-main-2);
+    border: 1px solid var(--dc-border);
+    border-radius: 16px;
+    padding: 12px;
+  }
+
+  .comment-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+    font-weight: 800;
     flex: none;
   }
 
-  .dc-input-shell button[type="submit"]:hover {
+  .comment-avatar.author {
+    background: linear-gradient(135deg, var(--dc-author), #f7c75d);
+    color: #3a2400;
+  }
+
+  .comment-avatar.visitor {
+    background: linear-gradient(135deg, var(--dc-visitor), #79bcff);
+    color: #082542;
+  }
+
+  .comment-body {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .comment-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .comment-meta strong {
+    color: var(--dc-text);
+    font-size: 13px;
+  }
+
+  .comment-meta span {
+    color: var(--dc-text-faint);
+    font-size: 12px;
+  }
+
+  .comment-text {
+    color: var(--dc-text-soft);
+    font-size: 14px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .comment-form {
+    display: grid;
+    gap: 10px;
+  }
+
+  .comment-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 88px;
+    resize: vertical;
+    border: 1px solid var(--dc-border);
+    background: var(--dc-input);
+    color: var(--dc-text);
+    border-radius: 14px;
+    padding: 12px 14px;
+    outline: none;
+    font-size: 14px;
+    line-height: 1.7;
+    font-family: inherit;
+  }
+
+  .comment-form textarea::placeholder {
+    color: var(--dc-text-faint);
+  }
+
+  .comment-form textarea:focus {
+    border-color: rgba(88,101,242,0.6);
+    box-shadow: 0 0 0 3px rgba(88,101,242,0.14);
+  }
+
+  .comment-form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .comment-note {
+    color: var(--dc-text-faint);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .comment-submit {
+    border: 0;
+    border-radius: 12px;
+    padding: 10px 14px;
+    background: linear-gradient(180deg, var(--dc-accent), var(--dc-accent-2));
+    color: #fff;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform var(--dc-transition), box-shadow var(--dc-transition);
+    box-shadow: 0 10px 20px rgba(88,101,242,0.20);
+  }
+
+  .comment-submit:hover {
     transform: translateY(-1px);
-    box-shadow: 0 14px 24px rgba(88,101,242,0.28);
   }
 
   .dc-discussion {
@@ -1284,13 +1340,16 @@ permalink: /Wechat.html
       align-items: flex-start;
     }
 
-    .dc-toolbar {
-      flex-direction: column;
-      align-items: flex-start;
+    .forum-composer-card,
+    .forum-feed-wrap,
+    .dc-discussion {
+      padding-left: 18px;
+      padding-right: 18px;
     }
 
-    .dc-chat {
-      max-height: 480px;
+    .forum-composer-card {
+      margin-left: 18px;
+      margin-right: 18px;
     }
   }
 
@@ -1333,44 +1392,42 @@ permalink: /Wechat.html
       font-size: 20px;
     }
 
-    .msg-row {
-      padding: 10px 16px;
+    .forum-composer-card {
+      margin: 14px 12px;
+      padding: 16px;
+      border-radius: 18px;
     }
 
-    .msg-body {
-      max-width: 92%;
+    .forum-feed-wrap {
+      padding: 2px 12px 18px;
     }
 
-    .dc-input-wrap {
-      padding: 0 12px 14px;
+    .forum-post {
+      padding: 16px 14px 14px;
+      border-radius: 18px;
+    }
+
+    .forum-post-head {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .post-title {
+      font-size: 19px;
     }
 
     .dc-discussion {
       padding: 16px 14px 22px;
     }
 
-    .dc-input-shell {
-      flex-wrap: wrap;
+    .forum-composer-bottom,
+    .comment-form-row {
+      align-items: stretch;
     }
 
-    .dc-input-actions {
+    .forum-compose-actions {
       width: 100%;
-    }
-
-    .dc-input-shell button[type="submit"] {
-      width: 100%;
-    }
-
-    .reply-bar {
-      margin: 0 12px 10px;
-    }
-
-    .date-separator,
-    .dc-typing {
-      padding-left: 16px;
-      padding-right: 16px;
-      margin-left: 0;
-      margin-right: 0;
+      justify-content: space-between;
     }
   }
 </style>
@@ -1379,55 +1436,50 @@ permalink: /Wechat.html
   (function () {
     const rooms = {
       public: {
-        title: 'public-chat',
-        desc: 'A place for open conversation, quick questions, and casual interaction.',
-        introHeading: 'Welcome to #public-chat',
-        introText: 'This is the beginning of the channel. Start a conversation, share ideas, or switch to a more focused room.',
-        welcome: 'Welcome to the public channel. Everyone is free to join, ask, and share.'
+        title: 'public-feed',
+        desc: 'A board for public posts, thoughts, questions, and open interaction.',
+        introHeading: 'Welcome to #public-feed',
+        introText: 'Share a post, start a discussion, and leave comments under a specific topic. This area feels more like a community board than a chat room.'
       },
       research: {
-        title: 'research-room',
-        desc: 'Focused discussion on papers, methods, experiments, and reproducibility.',
-        introHeading: 'Welcome to #research-room',
-        introText: 'Use this channel to discuss research ideas, technical methods, paper feedback, and experiment design.',
-        welcome: 'Welcome to the research room. Sharing your problem setting and what you have tried usually leads to better discussion.'
+        title: 'research-board',
+        desc: 'Focused posts on papers, methods, experiments, and reproducibility.',
+        introHeading: 'Welcome to #research-board',
+        introText: 'Post ideas, discuss technical details, compare methods, and leave targeted comments under each research topic.'
       },
       life: {
-        title: 'life-corner',
-        desc: 'A relaxed space for productivity, habits, health, and daily balance.',
-        introHeading: 'Welcome to #life-corner',
-        introText: 'This channel is for routines, motivation, exercise, balance, and everyday thoughts beyond research.',
-        welcome: 'Welcome to the life corner. Slow down a bit and talk about daily life too.'
+        title: 'life-board',
+        desc: 'A relaxed board for routines, health, balance, habits, and daily reflection.',
+        introHeading: 'Welcome to #life-board',
+        introText: 'Use this space for slower discussions about life, motivation, habits, exercise, and maintaining long-term balance.'
       }
     };
 
-    const storageKey = 'discord-style-room-history-v5';
-    const unreadKey = 'discord-style-room-unread-v1';
-    const themeKey = 'discord-style-theme-v1';
+    const storageKey = 'forum-style-room-posts-v2';
+    const unreadKey = 'forum-style-room-unread-v2';
+    const themeKey = 'forum-style-theme-v2';
 
-    const quickChat = document.getElementById('quick-chat');
-    const form = document.getElementById('chat-form');
-    const input = document.getElementById('chat-text');
-    const typingRow = document.getElementById('typing-row');
-    const typingText = document.getElementById('typing-text');
-    const clearBtn = document.getElementById('clear-current-chat');
     const roomTitle = document.getElementById('room-title');
     const roomDesc = document.getElementById('room-desc');
     const introHeading = document.getElementById('intro-heading');
     const introText = document.getElementById('intro-text');
     const statusText = document.getElementById('chat-status');
-    const roleButtons = Array.from(document.querySelectorAll('.dc-role-btn'));
-    const promptButtons = Array.from(document.querySelectorAll('.dc-prompts button'));
-    const inputActionButtons = Array.from(document.querySelectorAll('.input-icon-btn'));
+    const feedSummary = document.getElementById('feed-summary');
+    const composeRoomLabel = document.getElementById('compose-room-label');
+    const forumFeed = document.getElementById('forum-feed');
+    const postTitleInput = document.getElementById('post-title');
+    const postTextInput = document.getElementById('post-text');
+    const submitPostBtn = document.getElementById('submit-post');
+    const composerCount = document.getElementById('composer-count');
+    const clearBtn = document.getElementById('clear-current-room');
     const channelSearch = document.getElementById('channel-search');
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
-    const replyBar = document.getElementById('reply-bar');
-    const replyTargetName = document.getElementById('reply-target-name');
-    const replyTargetText = document.getElementById('reply-target-text');
-    const cancelReplyBtn = document.getElementById('cancel-reply');
 
-    const allChannelButtons = Array.from(document.querySelectorAll('.dc-channel'));
+    const roleButtons = Array.from(document.querySelectorAll('.dc-role-btn'));
+    const promptButtons = Array.from(document.querySelectorAll('.dc-prompts button'));
+    const channelButtons = Array.from(document.querySelectorAll('.dc-channel'));
+    const serverButtons = Array.from(document.querySelectorAll('.server-btn[data-room]'));
     const sectionToggles = Array.from(document.querySelectorAll('.section-toggle'));
 
     const badges = {
@@ -1436,66 +1488,137 @@ permalink: /Wechat.html
       life: document.getElementById('badge-life')
     };
 
-    if (!quickChat || !form || !input) return;
+    if (!forumFeed || !postTextInput || !submitPostBtn) return;
 
-    let currentRoom = 'public';
-    let currentRole = 'visitor';
-    let history = loadHistory();
-    let unread = loadUnread();
-    let replyState = null;
+    function uid(prefix) {
+      return prefix + '-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
+    }
 
-    initTheme();
-    bindSectionToggles();
-
-    function nowText() {
-      const now = new Date();
-      return now.toLocaleTimeString('en-US', {
+    function formatTime(timestamp) {
+      const date = new Date(timestamp);
+      return date.toLocaleString('en-US', {
+        month: 'short',
+        day: 'numeric',
         hour: '2-digit',
         minute: '2-digit',
         hour12: false
       });
     }
 
-    function todayLabel() {
-      const now = new Date();
-      return now.toLocaleDateString('en-US', {
-        weekday: 'long',
-        month: 'short',
-        day: 'numeric'
-      });
+    function seedPosts() {
+      return {
+        public: [
+          {
+            id: uid('post'),
+            title: 'Welcome to the new community board',
+            text: 'This page is now designed as a post-and-comment space instead of a chat room. Feel free to share ideas, questions, or updates in a more structured way.',
+            role: 'author',
+            sender: 'Author',
+            time: Date.now() - 1000 * 60 * 90,
+            comments: [
+              {
+                id: uid('comment'),
+                role: 'visitor',
+                sender: 'Visitor',
+                text: 'This structure feels much cleaner for discussion. It is easier to focus on one topic at a time.',
+                time: Date.now() - 1000 * 60 * 70
+              }
+            ]
+          },
+          {
+            id: uid('post'),
+            title: 'What kind of topics should this page encourage?',
+            text: 'I am thinking this board can be used for academic exchange, project sharing, and also some daily reflections. What balance would feel the most natural?',
+            role: 'visitor',
+            sender: 'Visitor',
+            time: Date.now() - 1000 * 60 * 35,
+            comments: []
+          }
+        ],
+        research: [
+          {
+            id: uid('post'),
+            title: 'How should we evaluate a new research direction?',
+            text: 'When exploring a new direction, I usually look at novelty, feasibility, and whether it can lead to a coherent long-term story. I would be interested in hearing other criteria as well.',
+            role: 'author',
+            sender: 'Author',
+            time: Date.now() - 1000 * 60 * 120,
+            comments: [
+              {
+                id: uid('comment'),
+                role: 'visitor',
+                sender: 'Visitor',
+                text: 'I also care a lot about whether the problem setting is realistic and whether there is a clear baseline to compare against.',
+                time: Date.now() - 1000 * 60 * 80
+              }
+            ]
+          }
+        ],
+        life: [
+          {
+            id: uid('post'),
+            title: 'How do you reset after intense work?',
+            text: 'After long research sessions, I find that a short walk, stretching, or just leaving the screen for a while helps a lot. I am curious what routines work best for others.',
+            role: 'visitor',
+            sender: 'Visitor',
+            time: Date.now() - 1000 * 60 * 55,
+            comments: [
+              {
+                id: uid('comment'),
+                role: 'author',
+                sender: 'Author',
+                text: 'A simple rule I like is to separate deep work and recovery on purpose, instead of waiting until I feel exhausted.',
+                time: Date.now() - 1000 * 60 * 40
+              }
+            ]
+          }
+        ]
+      };
     }
 
-    function loadHistory() {
+    function loadPosts() {
       try {
         const raw = localStorage.getItem(storageKey);
-        const parsed = raw ? JSON.parse(raw) : {};
+        if (!raw) return seedPosts();
+        const parsed = JSON.parse(raw);
         return {
           public: Array.isArray(parsed.public) ? parsed.public : [],
           research: Array.isArray(parsed.research) ? parsed.research : [],
           life: Array.isArray(parsed.life) ? parsed.life : []
         };
       } catch (e) {
-        return { public: [], research: [], life: [] };
+        return seedPosts();
       }
     }
 
-    function saveHistory() {
+    function savePosts() {
       try {
-        localStorage.setItem(storageKey, JSON.stringify(history));
+        localStorage.setItem(storageKey, JSON.stringify(posts));
       } catch (e) {}
     }
 
     function loadUnread() {
       try {
         const raw = localStorage.getItem(unreadKey);
-        const parsed = raw ? JSON.parse(raw) : {};
+        if (!raw) {
+          return {
+            public: 0,
+            research: posts.research.length,
+            life: posts.life.length
+          };
+        }
+        const parsed = JSON.parse(raw);
         return {
           public: Number.isFinite(parsed.public) ? parsed.public : 0,
           research: Number.isFinite(parsed.research) ? parsed.research : 0,
           life: Number.isFinite(parsed.life) ? parsed.life : 0
         };
       } catch (e) {
-        return { public: 0, research: 0, life: 0 };
+        return {
+          public: 0,
+          research: posts.research.length,
+          life: posts.life.length
+        };
       }
     }
 
@@ -1505,262 +1628,11 @@ permalink: /Wechat.html
       } catch (e) {}
     }
 
-    function createDateSeparator(text) {
-      const row = document.createElement('div');
-      row.className = 'date-separator';
-      const label = document.createElement('span');
-      label.textContent = text;
-      row.appendChild(label);
-      return row;
-    }
-
-    function createReplyPreview(reply) {
-      const wrap = document.createElement('div');
-      wrap.className = 'reply-preview';
-
-      const line = document.createElement('span');
-      line.className = 'reply-preview-line';
-
-      const name = document.createElement('strong');
-      name.textContent = reply.sender;
-
-      const text = document.createElement('span');
-      text.className = 'reply-preview-text';
-      text.textContent = reply.text;
-
-      wrap.appendChild(line);
-      wrap.appendChild(name);
-      wrap.appendChild(text);
-      return wrap;
-    }
-
-    function createActions(msg) {
-      const actions = document.createElement('div');
-      actions.className = 'msg-actions';
-
-      const reactBtn = document.createElement('button');
-      reactBtn.className = 'msg-action-btn';
-      reactBtn.type = 'button';
-      reactBtn.title = 'React';
-      reactBtn.textContent = '😊';
-      reactBtn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        input.value += '😊 ';
-        input.focus();
-      });
-
-      const copyBtn = document.createElement('button');
-      copyBtn.className = 'msg-action-btn';
-      copyBtn.type = 'button';
-      copyBtn.title = 'Copy';
-      copyBtn.textContent = '⧉';
-      copyBtn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        const copyText = msg.text || '';
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(copyText).catch(function () {});
-        } else {
-          input.value = copyText;
-        }
-      });
-
-      const replyBtn = document.createElement('button');
-      replyBtn.className = 'msg-action-btn';
-      replyBtn.type = 'button';
-      replyBtn.title = 'Reply';
-      replyBtn.textContent = '↩';
-      replyBtn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        setReplyState(msg);
-      });
-
-      actions.appendChild(reactBtn);
-      actions.appendChild(copyBtn);
-      actions.appendChild(replyBtn);
-
-      return actions;
-    }
-
-    function createMsg(msg, previousMsg, index) {
-      const isCompact =
-        previousMsg &&
-        previousMsg.sender === msg.sender &&
-        previousMsg.role === msg.role &&
-        previousMsg.direction === msg.direction;
-
-      const row = document.createElement('div');
-      row.className = `msg-row ${msg.direction} ${msg.role}${isCompact ? ' compact' : ''}`;
-      row.dataset.index = String(index);
-
-      const avatar = document.createElement('span');
-      avatar.className = 'msg-avatar';
-      avatar.textContent = msg.role === 'author' ? 'AU' : 'VS';
-
-      const body = document.createElement('div');
-      body.className = 'msg-body';
-
-      const meta = document.createElement('div');
-      meta.className = 'msg-meta';
-
-      const name = document.createElement('span');
-      name.className = 'msg-name';
-      name.textContent = msg.sender;
-
-      const time = document.createElement('span');
-      time.className = 'msg-time';
-      time.textContent = msg.time;
-
-      const bubble = document.createElement('div');
-      bubble.className = 'bubble';
-      bubble.textContent = msg.text;
-
-      meta.appendChild(name);
-      meta.appendChild(time);
-      body.appendChild(meta);
-
-      if (msg.replyTo) {
-        body.appendChild(createReplyPreview(msg.replyTo));
-      }
-
-      body.appendChild(bubble);
-      body.appendChild(createActions(msg));
-
-      row.appendChild(avatar);
-      row.appendChild(body);
-
-      row.addEventListener('dblclick', function () {
-        setReplyState(msg);
-      });
-
-      return row;
-    }
-
-    function renderRoom() {
-      const meta = rooms[currentRoom];
-      const roomHistory = history[currentRoom];
-
-      roomTitle.textContent = meta.title;
-      roomDesc.textContent = meta.desc;
-      introHeading.textContent = meta.introHeading;
-      introText.textContent = meta.introText;
-      statusText.textContent = `${Object.keys(rooms).length} channels available`;
-
-      quickChat.innerHTML = '';
-      quickChat.appendChild(createDateSeparator(`Today · ${todayLabel()}`));
-
-      if (!roomHistory.length) {
-        quickChat.appendChild(createMsg({
-          text: meta.welcome,
-          direction: 'incoming',
-          role: 'author',
-          sender: 'Author',
-          time: nowText()
-        }, null, 0));
-      } else {
-        roomHistory.forEach(function (msg, index) {
-          const previousMsg = index > 0 ? roomHistory[index - 1] : null;
-          quickChat.appendChild(createMsg(msg, previousMsg, index));
-        });
-      }
-
-      quickChat.scrollTop = quickChat.scrollHeight;
-      unread[currentRoom] = 0;
-      saveUnread();
-      updateBadges();
-      clearReplyState();
-    }
-
-    function appendMessage(msg, shouldSave) {
-      const roomHistory = history[currentRoom];
-
-      if (!quickChat.querySelector('.date-separator')) {
-        quickChat.appendChild(createDateSeparator(`Today · ${todayLabel()}`));
-      }
-
-      const previousMsg = roomHistory.length ? roomHistory[roomHistory.length - 1] : null;
-
-      if (shouldSave) {
-        roomHistory.push(msg);
-        history[currentRoom] = roomHistory.slice(-120);
-        saveHistory();
-      }
-
-      quickChat.appendChild(createMsg(msg, previousMsg, roomHistory.length - 1));
-      quickChat.scrollTop = quickChat.scrollHeight;
-
-      if (shouldSave) {
-        unread[currentRoom] = 0;
-        saveUnread();
-        updateBadges();
-      }
-    }
-
-    function switchRoom(roomId) {
-      if (!rooms[roomId]) return;
-      currentRoom = roomId;
-
-      allChannelButtons.forEach(function (btn) {
-        const isActive = btn.getAttribute('data-room') === roomId;
-        btn.classList.toggle('active', isActive);
-        btn.setAttribute('aria-current', isActive ? 'true' : 'false');
-      });
-
-      renderRoom();
-    }
-
-    function switchRole(role) {
-      currentRole = role;
-      roleButtons.forEach(function (btn) {
-        const active = btn.getAttribute('data-role') === role;
-        btn.classList.toggle('active', active);
-      });
-    }
-
-    function updateBadges() {
-      Object.keys(badges).forEach(function (key) {
-        if (!badges[key]) return;
-
-        const count = Number.isFinite(unread[key]) ? unread[key] : 0;
-
-        if (key === currentRoom || count <= 0) {
-          badges[key].textContent = '';
-          badges[key].style.visibility = 'hidden';
-        } else {
-          badges[key].textContent = count;
-          badges[key].style.visibility = 'visible';
-        }
-      });
-    }
-
-    function setReplyState(msg) {
-      replyState = {
-        sender: msg.sender,
-        text: msg.text
-      };
-      replyTargetName.textContent = replyState.sender;
-      replyTargetText.textContent = replyState.text;
-      replyBar.hidden = false;
-      input.focus();
-    }
-
-    function clearReplyState() {
-      replyState = null;
-      replyBar.hidden = true;
-      replyTargetName.textContent = '';
-      replyTargetText.textContent = '';
-    }
-
-    function bindSectionToggles() {
-      sectionToggles.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          const section = btn.getAttribute('data-section');
-          const body = document.querySelector(`[data-section-body="${section}"]`);
-          const expanded = btn.getAttribute('aria-expanded') === 'true';
-          btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-          if (body) body.hidden = expanded;
-        });
-      });
-    }
+    let currentRoom = 'public';
+    let currentRole = 'visitor';
+    let posts = loadPosts();
+    let unread = loadUnread();
+    let expandedPosts = new Set();
 
     function initTheme() {
       let savedTheme = null;
@@ -1770,7 +1642,6 @@ permalink: /Wechat.html
 
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-
       applyTheme(theme);
     }
 
@@ -1801,11 +1672,346 @@ permalink: /Wechat.html
       }
     }
 
-    allChannelButtons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        switchRoom(btn.getAttribute('data-room'));
+    function bindSectionToggles() {
+      sectionToggles.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const section = btn.getAttribute('data-section');
+          const body = document.querySelector('[data-section-body="' + section + '"]');
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+          if (body) body.hidden = expanded;
+        });
       });
-    });
+    }
+
+    function updateComposerCount() {
+      const len = (postTextInput.value || '').length;
+      composerCount.textContent = len + ' / 1200';
+    }
+
+    function updateBadges() {
+      Object.keys(badges).forEach(function (key) {
+        if (!badges[key]) return;
+        const count = Number.isFinite(unread[key]) ? unread[key] : 0;
+        if (key === currentRoom || count <= 0) {
+          badges[key].textContent = '';
+          badges[key].style.visibility = 'hidden';
+        } else {
+          badges[key].textContent = count;
+          badges[key].style.visibility = 'visible';
+        }
+      });
+    }
+
+    function getRoomLabel(roomId) {
+      return rooms[roomId] ? rooms[roomId].title : roomId;
+    }
+
+    function switchRole(role) {
+      currentRole = role;
+      roleButtons.forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-role') === role);
+      });
+    }
+
+    function switchRoom(roomId) {
+      if (!rooms[roomId]) return;
+      currentRoom = roomId;
+      unread[currentRoom] = 0;
+      saveUnread();
+
+      channelButtons.forEach(function (btn) {
+        const active = btn.getAttribute('data-room') === roomId;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-current', active ? 'true' : 'false');
+      });
+
+      serverButtons.forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-room') === roomId);
+      });
+
+      renderRoom();
+      updateBadges();
+    }
+
+    function createCommentItem(comment) {
+      const item = document.createElement('div');
+      item.className = 'comment-item';
+
+      const avatar = document.createElement('div');
+      avatar.className = 'comment-avatar ' + comment.role;
+      avatar.textContent = comment.role === 'author' ? 'AU' : 'VS';
+
+      const body = document.createElement('div');
+      body.className = 'comment-body';
+
+      const meta = document.createElement('div');
+      meta.className = 'comment-meta';
+
+      const name = document.createElement('strong');
+      name.textContent = comment.sender;
+
+      const time = document.createElement('span');
+      time.textContent = formatTime(comment.time);
+
+      const text = document.createElement('div');
+      text.className = 'comment-text';
+      text.textContent = comment.text;
+
+      meta.appendChild(name);
+      meta.appendChild(time);
+      body.appendChild(meta);
+      body.appendChild(text);
+
+      item.appendChild(avatar);
+      item.appendChild(body);
+
+      return item;
+    }
+
+    function createPostCard(post) {
+      const card = document.createElement('article');
+      card.className = 'forum-post';
+
+      const head = document.createElement('div');
+      head.className = 'forum-post-head';
+
+      const authorWrap = document.createElement('div');
+      authorWrap.className = 'forum-post-author';
+
+      const avatar = document.createElement('div');
+      avatar.className = 'post-avatar ' + post.role;
+      avatar.textContent = post.role === 'author' ? 'AU' : 'VS';
+
+      const authorMeta = document.createElement('div');
+      authorMeta.className = 'post-author-meta';
+
+      const name = document.createElement('strong');
+      name.textContent = post.sender;
+
+      const subMeta = document.createElement('div');
+      subMeta.className = 'post-submeta';
+
+      const time = document.createElement('span');
+      time.className = 'post-time';
+      time.textContent = formatTime(post.time);
+
+      const roleTag = document.createElement('span');
+      roleTag.className = 'post-role-tag ' + post.role;
+      roleTag.textContent = post.role === 'author' ? 'AUTHOR' : 'VISITOR';
+
+      subMeta.appendChild(time);
+      subMeta.appendChild(roleTag);
+
+      authorMeta.appendChild(name);
+      authorMeta.appendChild(subMeta);
+
+      authorWrap.appendChild(avatar);
+      authorWrap.appendChild(authorMeta);
+
+      const rightActions = document.createElement('div');
+      rightActions.className = 'post-actions-top';
+
+      const roomChip = document.createElement('span');
+      roomChip.className = 'room-chip';
+      roomChip.textContent = getRoomLabel(currentRoom);
+
+      rightActions.appendChild(roomChip);
+
+      head.appendChild(authorWrap);
+      head.appendChild(rightActions);
+
+      card.appendChild(head);
+
+      if (post.title && post.title.trim()) {
+        const title = document.createElement('h4');
+        title.className = 'post-title';
+        title.textContent = post.title;
+        card.appendChild(title);
+      }
+
+      const content = document.createElement('div');
+      content.className = 'post-content';
+      content.textContent = post.text;
+      card.appendChild(content);
+
+      const footer = document.createElement('div');
+      footer.className = 'post-footer';
+
+      const stat = document.createElement('div');
+      stat.className = 'post-stat';
+      stat.textContent = (post.comments ? post.comments.length : 0) + ' comment' + ((post.comments && post.comments.length === 1) ? '' : 's');
+
+      const actionRow = document.createElement('div');
+      actionRow.className = 'post-action-row';
+
+      const toggleBtn = document.createElement('button');
+      toggleBtn.className = 'post-btn primary';
+      toggleBtn.type = 'button';
+      toggleBtn.textContent = expandedPosts.has(post.id) ? 'Hide Comments' : 'Comment';
+      toggleBtn.addEventListener('click', function () {
+        if (expandedPosts.has(post.id)) {
+          expandedPosts.delete(post.id);
+        } else {
+          expandedPosts.add(post.id);
+        }
+        renderFeed();
+      });
+
+      const quoteBtn = document.createElement('button');
+      quoteBtn.className = 'post-btn';
+      quoteBtn.type = 'button';
+      quoteBtn.textContent = 'Use as Draft';
+      quoteBtn.addEventListener('click', function () {
+        postTitleInput.value = 'Re: ' + (post.title || 'Discussion');
+        postTextInput.value = '> ' + post.text.split('\n').join('\n> ') + '\n\n';
+        updateComposerCount();
+        postTextInput.focus();
+      });
+
+      actionRow.appendChild(toggleBtn);
+      actionRow.appendChild(quoteBtn);
+
+      footer.appendChild(stat);
+      footer.appendChild(actionRow);
+
+      card.appendChild(footer);
+
+      if (expandedPosts.has(post.id)) {
+        const commentArea = document.createElement('div');
+        commentArea.className = 'comment-area';
+
+        const commentList = document.createElement('div');
+        commentList.className = 'comment-list';
+
+        if (Array.isArray(post.comments) && post.comments.length) {
+          post.comments.forEach(function (comment) {
+            commentList.appendChild(createCommentItem(comment));
+          });
+        }
+
+        const form = document.createElement('div');
+        form.className = 'comment-form';
+
+        const textarea = document.createElement('textarea');
+        textarea.placeholder = 'Write a focused comment on this post...';
+
+        const row = document.createElement('div');
+        row.className = 'comment-form-row';
+
+        const note = document.createElement('div');
+        note.className = 'comment-note';
+        note.textContent = 'Commenting as ' + (currentRole === 'author' ? 'Author' : 'Visitor');
+
+        const submit = document.createElement('button');
+        submit.className = 'comment-submit';
+        submit.type = 'button';
+        submit.textContent = 'Publish Comment';
+
+        submit.addEventListener('click', function () {
+          const value = textarea.value.trim();
+          if (!value) return;
+
+          const targetRoom = posts[currentRoom];
+          const targetPost = targetRoom.find(function (item) { return item.id === post.id; });
+          if (!targetPost) return;
+
+          targetPost.comments = Array.isArray(targetPost.comments) ? targetPost.comments : [];
+          targetPost.comments.push({
+            id: uid('comment'),
+            role: currentRole,
+            sender: currentRole === 'author' ? 'Author' : 'Visitor',
+            text: value,
+            time: Date.now()
+          });
+
+          savePosts();
+          expandedPosts.add(post.id);
+          renderFeed();
+        });
+
+        row.appendChild(note);
+        row.appendChild(submit);
+
+        form.appendChild(textarea);
+        form.appendChild(row);
+
+        commentArea.appendChild(commentList);
+        commentArea.appendChild(form);
+        card.appendChild(commentArea);
+      }
+
+      return card;
+    }
+
+    function renderFeed() {
+      const roomPosts = Array.isArray(posts[currentRoom]) ? posts[currentRoom].slice() : [];
+      roomPosts.sort(function (a, b) {
+        return b.time - a.time;
+      });
+
+      forumFeed.innerHTML = '';
+
+      if (!roomPosts.length) {
+        const empty = document.createElement('div');
+        empty.className = 'forum-empty';
+        empty.innerHTML = '<strong>No posts yet.</strong><br/>Be the first to publish something in this channel.';
+        forumFeed.appendChild(empty);
+      } else {
+        roomPosts.forEach(function (post) {
+          forumFeed.appendChild(createPostCard(post));
+        });
+      }
+
+      const totalPosts = roomPosts.length;
+      const totalComments = roomPosts.reduce(function (sum, post) {
+        return sum + (Array.isArray(post.comments) ? post.comments.length : 0);
+      }, 0);
+
+      feedSummary.textContent = totalPosts + ' posts · ' + totalComments + ' comments in this channel.';
+      statusText.textContent = Object.keys(rooms).length + ' channels · ' + totalPosts + ' posts';
+    }
+
+    function renderRoom() {
+      const meta = rooms[currentRoom];
+      roomTitle.textContent = meta.title;
+      roomDesc.textContent = meta.desc;
+      introHeading.textContent = 'Welcome to #' + meta.title;
+      introText.textContent = meta.introText;
+      composeRoomLabel.textContent = meta.title;
+      renderFeed();
+    }
+
+    function publishPost() {
+      const title = postTitleInput.value.trim();
+      const text = postTextInput.value.trim();
+
+      if (!text) return;
+
+      const newPost = {
+        id: uid('post'),
+        title: title,
+        text: text,
+        role: currentRole,
+        sender: currentRole === 'author' ? 'Author' : 'Visitor',
+        time: Date.now(),
+        comments: []
+      };
+
+      posts[currentRoom] = Array.isArray(posts[currentRoom]) ? posts[currentRoom] : [];
+      posts[currentRoom].push(newPost);
+      savePosts();
+
+      postTitleInput.value = '';
+      postTextInput.value = '';
+      updateComposerCount();
+      expandedPosts = new Set([newPost.id]);
+      renderRoom();
+    }
+
+    bindSectionToggles();
+    initTheme();
+    updateComposerCount();
 
     roleButtons.forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -1813,25 +2019,50 @@ permalink: /Wechat.html
       });
     });
 
-    promptButtons.forEach(function (btn) {
+    channelButtons.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        input.value = btn.getAttribute('data-prompt') || '';
-        input.focus();
+        switchRoom(btn.getAttribute('data-room'));
       });
     });
 
-    inputActionButtons.forEach(function (btn) {
+    serverButtons.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        const insertText = btn.getAttribute('data-insert') || '';
-        input.value += insertText;
-        input.focus();
+        switchRoom(btn.getAttribute('data-room'));
       });
     });
+
+    promptButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        postTitleInput.value = btn.getAttribute('data-fill-title') || '';
+        postTextInput.value = btn.getAttribute('data-fill-text') || '';
+        updateComposerCount();
+        postTextInput.focus();
+      });
+    });
+
+    if (submitPostBtn) {
+      submitPostBtn.addEventListener('click', publishPost);
+    }
+
+    if (postTextInput) {
+      postTextInput.addEventListener('input', updateComposerCount);
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', function () {
+        posts[currentRoom] = [];
+        unread[currentRoom] = 0;
+        savePosts();
+        saveUnread();
+        renderRoom();
+        updateBadges();
+      });
+    }
 
     if (channelSearch) {
       channelSearch.addEventListener('input', function () {
         const keyword = channelSearch.value.trim().toLowerCase();
-        allChannelButtons.forEach(function (btn) {
+        channelButtons.forEach(function (btn) {
           const text = btn.textContent.toLowerCase();
           const matched = !keyword || text.indexOf(keyword) !== -1;
           btn.classList.toggle('hidden-by-search', !matched);
@@ -1843,56 +2074,6 @@ permalink: /Wechat.html
       themeToggleBtn.addEventListener('click', function () {
         const isLight = document.body.classList.contains('theme-light');
         applyTheme(isLight ? 'dark' : 'light');
-      });
-    }
-
-    if (cancelReplyBtn) {
-      cancelReplyBtn.addEventListener('click', function () {
-        clearReplyState();
-      });
-    }
-
-    input.addEventListener('input', function () {
-      const typing = input.value.trim().length > 0;
-      typingRow.hidden = !typing;
-      typingText.textContent = currentRole === 'author' ? 'Author is typing...' : 'Visitor is typing...';
-    });
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const value = input.value.trim();
-      if (!value) return;
-
-      const isAuthor = currentRole === 'author';
-      const msg = {
-        text: value,
-        direction: isAuthor ? 'incoming' : 'outgoing',
-        role: currentRole,
-        sender: isAuthor ? 'Author' : 'Visitor',
-        time: nowText()
-      };
-
-      if (replyState) {
-        msg.replyTo = {
-          sender: replyState.sender,
-          text: replyState.text
-        };
-      }
-
-      appendMessage(msg, true);
-
-      input.value = '';
-      typingRow.hidden = true;
-      clearReplyState();
-    });
-
-    if (clearBtn) {
-      clearBtn.addEventListener('click', function () {
-        history[currentRoom] = [];
-        unread[currentRoom] = 0;
-        saveHistory();
-        saveUnread();
-        renderRoom();
       });
     }
 
