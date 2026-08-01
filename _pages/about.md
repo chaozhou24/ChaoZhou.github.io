@@ -487,7 +487,14 @@ redirect_from:
 <div class="section-title">🔥 News</div>
 
 <div class="news-timeline">
+  
 
+  <div class="news-item">
+    <p>
+      <span class="news-date">2026.08</span>
+      Three papers have been accepted by the IEEE Global Communications Conference (GLOBECOM) 2026.
+    </p>
+  </div>
 
 
   <div class="news-item">
