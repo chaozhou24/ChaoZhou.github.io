@@ -487,7 +487,17 @@ redirect_from:
 <div class="section-title">🔥 News</div>
 
 <div class="news-timeline">
-  
+
+  <div class="news-item">
+    <p>
+      <span class="news-date">2026.08</span>
+      Our paper
+      <a href="https://ieeexplore.ieee.org/document/11643502" target="_blank">
+        Low-complexity Design for Beam Coverage in Near-field and Far-field: A Fourier Transform Approach
+      </a>
+      was accepted by IEEE Transactions on Wireless Communications.
+    </p>
+  </div>
 
   <div class="news-item">
     <p>
